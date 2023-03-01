@@ -1,0 +1,25 @@
+body {
+    background-color: cyan;
+}
+button {
+    padding: 8px 12px;
+}
+.operation {
+    background-color: coral;
+}
+.calculator {
+    background-color: blueviolet;
+}
+.calculator button:active {
+    background-color: orange;
+    color: black;
+}
+#button {
+    background-color: orange;
+    border-radius: 6px;
+    padding: 6px 8px;
+    width: 95px;
+}
+#button:active {
+    background-color: cyan;
+}
