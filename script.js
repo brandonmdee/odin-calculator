@@ -11,18 +11,22 @@ const zeroKey = document.querySelector('.zero');
 const equalsKey = document.querySelector('#equals');
 const addKey = document.querySelector('#add');
 const subtractKey = document.querySelector('#subtract');
+const multiplyKey = document.querySelector('#multiply');
+const divideKey = document.querySelector('#divide');
+const clearKey = document.querySelector('#clear');
+const decimalKey = document.querySelector('#decimal');
 let operation = document.querySelector('#operation');
 let value = [];
 let result = 0;
 let field = [];
 let action;
-let parameters = [];
-let runningTotal = 0;
 
-console.log(`value is presently: ${value}`);
+
+
 oneKey.addEventListener('click', () => {
     value.push(1);
     console.log(value);
+    
     
 });
 twoKey.addEventListener('click', () => {
@@ -61,81 +65,126 @@ zeroKey.addEventListener('click', () => {
     value.push(0);
     console.log(value);
 });
-
+decimalKey.addEventListener('click', () => {
+    value.push('.');
+    console.log(value);
+})
 
 const joiner = function () {
-    
-    parameters.push(parseInt(value.join('')));
+    field.push(parseFloat(value.join('')));
+     for (let x = 0; x < field.length; x++) {
+        if(isNaN(field[x])) {
+            field.splice(x,1);
+        }
+    }
     value.length = 0;
 }
 
-const add = function () {
-    
-    joiner();
-    action = "add";
-    
-}
-
-
-const subtract = function () {
-    joiner();
-    action = "subtract";
-}
-const multiply = function () {
-    
-    action = "multiply";
-}
-const divide = function () {
-    
-    action = "divide";
-}
-
-
 let operate = function () {
     joiner();
-    if(parameters[1] === 0 || parameters[1] === NaN) {
-        parameters.splice(1,1);
-    }
     switch (action) {
       case 'add':
-            for (let x = 0; x < parameters.length; x++) {
-                result += parseInt(parameters[x]);
-                
-            }
             
-            parameters.length = 0;
-            parameters.push(result);
+      if (field.length === 2) {
+        
+        result = parseFloat(field[0]) + parseFloat(field[1]);
+        field.length = 0;
+        field.push(result);
+    }
         
         break;
         
       case 'subtract':
         
-        console.log(parameters);
-            result = parseInt(parameters[0]) - parseInt(parameters[1]);
-            parameters.length = 0;
-            parameters.push(result);
+        if (field.length === 2) {
+            result = parseFloat(field[0]) - parseFloat(field[1]);
+            field.length = 0;
+            field.push(result);
+        }
+        
         break;
-        /*
+        
     case 'multiply':
-        result = valueA * valueB;
-        console.log(`the result is ${result}`);
+        if (field.length === 2) {
+            result = parseFloat(field[0]) * parseFloat(field[1]);
+            field.length = 0;
+            field.push(result);
+        }
+
+        
         break;
       case 'divide':
-        result = value / valueB;
-        console.log(`the result is ${result}`);
-        */
+        if (field.length === 2) {
+            if(field[1] === 0) {
+                result = "ERROR";
+                console.log(result);
+            } else {
+            result = parseFloat(field[0]) / parseFloat(field[1]);
+            field.length = 0;
+            field.push(result);
+        }
+    }
+      
+      break;
+      default :
+        result = field[0];
     };
     
 };
-const equals = function () {
-    
+
+const add = function () {
     operate();
-    result = 0;
-    value.push(result);
-    console.log(`the current result is: ${parameters}`);
+    joiner();
+    action = "add";
+    operate();
+    
     
 }
+
+const subtract = function () {
+    operate();
+    joiner();
+    action = "subtract";
+    operate();
+    
+    
+}
+
+const multiply = function () {
+    operate();
+    joiner();
+    action = "multiply";
+    operate();
+    
+}
+
+const divide = function () {
+    operate();
+    joiner();
+    action = "divide";
+    operate();
+}
+
+const equals = function () {
+    operate();
+    action = "default";
+    console.log(result);
+    result = 0;  
+}
+
+const clearAll = function () {
+    result = 0;
+    action = "default";
+    field.length = 0;
+    value.length = 0;
+    field.push(result);
+    console.log(result);
+}
+
 addKey.addEventListener('click', add);
 subtractKey.addEventListener('click', subtract);
+multiplyKey.addEventListener('click', multiply);
+divideKey.addEventListener('click', divide);
+clearKey.addEventListener('click', clearAll);
 
-equalsKey.addEventListener('click', equals)
+equalsKey.addEventListener('click', equals);
