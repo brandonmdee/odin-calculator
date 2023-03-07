@@ -2,13 +2,19 @@ body {
     background-color: black;
     display: flex;
     height: 100vh;
+    justify-content: space-between;
+    align-items: ;
+    font-family: 'Arial', sans-serif;
+    flex-direction: column;
+}
+.content {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Arial', sans-serif;
 }
 button {
     
-    border-radius: 8px;
     border: 1px solid #1b1b1b;
     background-color: black;
     color: #808080;
@@ -20,14 +26,16 @@ button {
     font-size: 30px;
 }
 #operation {
-    background-color: black;
+    background-color: #1b1b1b;
     color: #ffa31a;
     display: flex;
     justify-content: right;
     font-size: 50px;
-    padding: 16px;
+    padding: 8px 16px;
+    
     max-width: 500px;
-    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     overflow: hidden;
 }
 .calculator {
@@ -35,6 +43,8 @@ button {
     width: 400px;
     display: flex;
     flex-direction: column;
+    border: 1px solid #1b1b1b;
+    border-radius: 8px;
 }
 .calculator button:active {
     background-color: #ffa31a;
@@ -42,7 +52,7 @@ button {
 }
 #button {
     background-color: #ffa31a;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 6px 8px;
     width: 95px;
     
@@ -63,8 +73,6 @@ button:hover {
   .functions {
     display: flex;
     color: black;
-    
-    
   }
   .inputs {
     display: flex;
@@ -84,9 +92,18 @@ button:hover {
      background-color: #808080;
     color: #ffa31a;
   }
-  .logo {
-    scale: 50%;
-  }
+
   .others {
     display: flex;
+  }
+  .footer {
+    color: #808080;
+    display: flex;
+    justify-content: center;
+  }
+  .footer a {
+    color: #ffa31a;
+  }
+  #logo {
+    width: 400px;
   }

@@ -87,11 +87,12 @@ let operate = function () {
         
         break;
       case 'divide':
-        console.log(field);
+        
         if (field.length === 2) {
             if(field[1] === 0) {
                 result = "ERROR";
                 operation.textContent = `ERROR`;
+                field.length = 0;
                 
             } else {
             result = parseFloat(field[0]) / parseFloat(field[1]);
@@ -103,19 +104,14 @@ let operate = function () {
       break;
       default :
         result = field[0];
-    };
-    
+    }; 
 };
 
 const add = function () {
-    
     operate();
     joiner();
-    
     action = "add";
     operate();
-    
-    
 }
 const subtract = function () {
     operate();
@@ -128,27 +124,25 @@ const multiply = function () {
     joiner();
     action = "multiply";
     operate();
-    
 }
 const divide = function () {
     operate();
     joiner();
     action = "divide";
-    operate();
-    
+    operate();   
 }
 const equals = function () {
     operate();
     action = "default";
-    
-    if (Number.isInteger(result)) {
-        operation.textContent = `${result}`;
-    } else if (String(result)) {
-        console.log(`Don't divide by zero ya dingus!`);
-        field.length = 0;
+    if (result === "ERROR") {
+        console.log("don't divide by zero ya dingus!");
     } else {
+        if (Number.isInteger(result)) {
+         operation.textContent = `${result}`;
+        } else {
     operation.textContent = `${result.toFixed(2)}`;
     }
+}
     result = 0;  
 }
 const clearAll = function () {
@@ -157,18 +151,16 @@ const clearAll = function () {
     field.length = 0;
     value.length = 0;
     operation.textContent = '0';
-    
-
 }
 const backspace = function() {
     if(value.length > 1) {
         value.pop();
         operation.textContent = `${value.join('')}`;
-        console.log(value);
+        
     } else {
         operation.textContent = `${result}`;
         value.pop();
-        console.log(value);
+        
     };
     }
 
@@ -185,66 +177,3 @@ equalsKey.addEventListener('click', equals);
 delKey.addEventListener('click', backspace);
 percentKey.addEventListener('click', percent)
 
-//dummied code
-
-/*
-const oneKey = document.querySelector('.one');
-const twoKey = document.querySelector('.two');
-const threeKey = document.querySelector('.three');
-const fourKey = document.querySelector('.four');
-const fiveKey = document.querySelector('.five');
-const sixKey = document.querySelector('.six');
-const sevenKey = document.querySelector('.seven');
-const eightKey = document.querySelector('.eight');
-const nineKey = document.querySelector('.nine');
-const zeroKey = document.querySelector('.zero');
-*/
-/*
-oneKey.addEventListener('click', () => {
-    value.push(1);
-    console.log(value);
-    
-    
-});
-twoKey.addEventListener('click', () => {
-    value.push(2);
-    console.log(value);
-});
-threeKey.addEventListener('click', () => {
-    value.push(3);
-    console.log(value);
-});
-fourKey.addEventListener('click', () => {
-    value.push(4);
-    console.log(value);
-});
-fiveKey.addEventListener('click', () => {
-    value.push(5);
-    console.log(value);
-});
-sixKey.addEventListener('click', () => {
-    value.push(6);
-    console.log(value);
-});
-sevenKey.addEventListener('click', () => {
-    value.push(7);
-    console.log(value);
-});
-eightKey.addEventListener('click', () => {
-    value.push(8);
-    console.log(value);
-});
-nineKey.addEventListener('click', () => {
-    value.push(9);
-    console.log(value);
-});
-zeroKey.addEventListener('click', () => {
-    value.push(0);
-    console.log(value);
-});
-
-decimalKey.addEventListener('click', () => {
-    value.push('.');
-    console.log(value);
-})
-*/
