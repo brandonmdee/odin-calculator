@@ -1,34 +1,92 @@
 body {
-    background-color: grey;
+    background-color: black;
     display: flex;
     height: 100vh;
     justify-content: center;
     align-items: center;
+    font-family: 'Arial', sans-serif;
 }
 button {
-    padding: 8px 12px;
+    
+    border-radius: 8px;
+    border: 1px solid #1b1b1b;
+    background-color: black;
+    color: #808080;
+    width: 100px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
 }
-.operation {
-    background-color: coral;
+#operation {
+    background-color: black;
+    color: #ffa31a;
+    display: flex;
+    justify-content: right;
+    font-size: 50px;
+    padding: 16px;
+    max-width: 500px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 .calculator {
-    background-color: blueviolet;
+    
     width: 400px;
+    display: flex;
+    flex-direction: column;
 }
 .calculator button:active {
-    background-color: orange;
+    background-color: #ffa31a;
     color: black;
 }
 #button {
-    background-color: orange;
+    background-color: #ffa31a;
     border-radius: 6px;
     padding: 6px 8px;
     width: 95px;
+    
 }
-#button:active {
-    background-color: cyan;
+
+button:hover {
+    background-color: #808080;
+    color: black;
 }
 .inputs {
     display: flex;
     
 }
+.keys {
+    display: flex;
+    flex-direction: column;
+}
+  .functions {
+    display: flex;
+    color: black;
+    
+    
+  }
+  .inputs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    
+  }
+  #equals {
+    background-color: #ffa31a;
+    color: black;
+    height: 130px;
+  }
+  #equals:active {
+    background-color: black;
+  }
+  #equals:hover {
+     background-color: #808080;
+    color: #ffa31a;
+  }
+  .logo {
+    scale: 50%;
+  }
+  .others {
+    display: flex;
+  }
