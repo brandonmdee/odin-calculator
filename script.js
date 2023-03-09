@@ -112,24 +112,28 @@ const add = function () {
     joiner();
     action = "add";
     operate();
+    operation.textContent = `${result}`;
 }
 const subtract = function () {
     operate();
     joiner();
     action = "subtract";
     operate(); 
+    operation.textContent = `${result}`;
 }
 const multiply = function () {
     operate();
     joiner();
     action = "multiply";
     operate();
+    operation.textContent = `${result}`;
 }
 const divide = function () {
     operate();
     joiner();
     action = "divide";
     operate();   
+    operation.textContent = `${result}`;
 }
 const equals = function () {
     operate();
